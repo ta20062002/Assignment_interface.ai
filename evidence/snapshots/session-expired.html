@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CoreFlex Member Service</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 22px; color: #1b2935; }
+      table { border-collapse: collapse; width: 720px; max-width: 100%; }
+      td { border: 1px solid #9aa9b7; padding: 9px; vertical-align: top; }
+      .hdr { background: #143f68; color: #fff; font-weight: bold; }
+      .nav { background: #e6edf3; } .notice { background: #fff3cd; }
+      .error { background: #f8d7da; } .value { font-weight: bold; }
+      button { padding: 5px 10px; } label { display: inline-block; min-width: 160px; }
+    </style>
+  </head>
+  <body>
+    <table role="presentation" aria-label="CoreFlex Member Servicing">
+      <tr><td class="hdr">CoreFlex - Member servicing</td></tr>
+      <tr><td class="nav"><a href="/">Home</a> | <a href="/members">Member inquiry</a> | <a href="/operator">Operator view</a></td></tr>
+      <tr><td><span data-system-state="session_expired"></span><h1>Session expired</h1><div class="error" role="alert">Your session expired. A human may need to sign in and resume.</div><p><a href="/members">Return to inquiry</a></p></td></tr>
+    </table>
+  </body>
+</html>

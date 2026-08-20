@@ -1,0 +1,23 @@
+{
+  "name": "computer-use-automation-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small, auditable computer-use discovery and deterministic replay system for legacy business UIs.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo:evidence": "node src/cli.js evidence",
+    "demo:fixture": "node src/cli.js discover --policy=fixture --memberId=M-1042",
+    "demo:replay": "node src/cli.js replay --artifact=evidence/capabilities/read-savings-balance.v1.json --memberId=M-1042",
+    "demo:replay:not-found": "node src/cli.js replay --artifact=evidence/capabilities/read-savings-balance.v1.json --memberId=M-404",
+    "demo:handoff": "node src/cli.js handoff --artifact=evidence/capabilities/read-savings-balance.v1.json --memberId=M-TIMEOUT",
+    "demo:live": "node src/cli.js discover --policy=openai --memberId=M-1042 --output=evidence/live",
+    "demo:live-browser": "node src/cli.js discover --policy=openai --surface=browser --memberId=M-1042 --output=evidence/live-browser"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.55.0"
+  }
+}

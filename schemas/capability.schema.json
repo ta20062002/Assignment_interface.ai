@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/computer-use-capability-v1.json",
+  "title": "Computer-use capability",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "version",
+    "approval",
+    "surface",
+    "tenantScope",
+    "contract",
+    "policy",
+    "steps",
+    "success",
+    "outcomes"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "computer-use-capability/v1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "approval": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "enum": ["draft", "approved", "retired"] } }
+    },
+    "surface": {
+      "type": "object",
+      "required": ["kind", "vendorFamily", "entryPath", "fingerprint"]
+    },
+    "tenantScope": { "type": "object", "required": ["mode", "compatibilityKey"] },
+    "contract": {
+      "type": "object",
+      "required": ["inputs", "outputs"],
+      "properties": {
+        "inputs": { "type": "array" },
+        "outputs": { "type": "array" }
+      }
+    },
+    "policy": { "type": "object", "required": ["allowedRoutes", "allowedActions"] },
+    "steps": { "type": "array", "minItems": 1 },
+    "success": { "type": "object", "required": ["all"] },
+    "outcomes": { "type": "object", "required": ["business", "recoverable", "hardFailures"] }
+  }
+}

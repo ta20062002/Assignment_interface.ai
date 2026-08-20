@@ -1,0 +1,11 @@
+{
+  "kind": "business_outcome",
+  "capabilityId": "member.savings-balance.read",
+  "runId": "bc9daf40-f90e-4cb8-9747-4304efde5145",
+  "code": "member_not_found",
+  "callerStatus": "not_found",
+  "message": "No member matched the supplied identifier.",
+  "outputs": {
+    "outcome": "member_not_found"
+  }
+}

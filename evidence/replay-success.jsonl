@@ -1,0 +1,10 @@
+{"seq":1,"at":"2026-08-19T21:40:17.876Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.started","capabilityId":"member.savings-balance.read","capabilityVersion":"1.0.0","surfaceSessionId":"http-73ae4b81-2451-4c98-a2c7-944aa1c577e1","inputNames":["memberId"]}
+{"seq":2,"at":"2026-08-19T21:40:17.876Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_started","stepId":"open-member-inquiry","action":"navigate"}
+{"seq":3,"at":"2026-08-19T21:40:17.879Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_completed","stepId":"open-member-inquiry","action":"navigate"}
+{"seq":4,"at":"2026-08-19T21:40:17.879Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_started","stepId":"enter-member-id","action":"type"}
+{"seq":5,"at":"2026-08-19T21:40:17.879Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_completed","stepId":"enter-member-id","action":"type"}
+{"seq":6,"at":"2026-08-19T21:40:17.879Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_started","stepId":"submit-member-inquiry","action":"click"}
+{"seq":7,"at":"2026-08-19T21:40:17.881Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_completed","stepId":"submit-member-inquiry","action":"click"}
+{"seq":8,"at":"2026-08-19T21:40:17.881Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_started","stepId":"read-savings-balance","action":"extract"}
+{"seq":9,"at":"2026-08-19T21:40:17.881Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.step_completed","stepId":"read-savings-balance","action":"extract"}
+{"seq":10,"at":"2026-08-19T21:40:17.881Z","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","type":"replay.succeeded","result":{"kind":"success","capabilityId":"member.savings-balance.read","runId":"4d11c784-03c1-4ca6-a1d7-6b42ab852caf","outputs":{"savingsBalance":"[REDACTED:savingsBalance:db743307c57cf4b1]","outcome":"success"}}}

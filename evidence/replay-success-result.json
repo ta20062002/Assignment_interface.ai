@@ -1,0 +1,9 @@
+{
+  "kind": "success",
+  "capabilityId": "member.savings-balance.read",
+  "runId": "4d11c784-03c1-4ca6-a1d7-6b42ab852caf",
+  "outputs": {
+    "savingsBalance": "[REDACTED:savingsBalance:db743307c57cf4b1]",
+    "outcome": "success"
+  }
+}

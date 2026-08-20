@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "computer-use-capability/v1",
+  "id": "member.savings-balance.read",
+  "version": "1.0.0",
+  "title": "Read current savings balance",
+  "description": "Looks up a member and returns the current savings balance without changing account state.",
+  "createdFrom": {
+    "discoveryRunId": "14458a04-6fe5-4ee4-8c4e-34b70807839f",
+    "recorder": "executor-normalized"
+  },
+  "approval": {
+    "status": "approved",
+    "approvedBy": "demo-review-fixture",
+    "approvedAt": "2026-08-20T00:00:00.000Z"
+  },
+  "surface": {
+    "kind": "web",
+    "vendorFamily": "coreflex-member-service",
+    "entryPath": "/",
+    "fingerprint": {
+      "titleContains": "CoreFlex",
+      "landmarkText": "Member servicing",
+      "strategy": "semantic-locator-with-legacy-form-fallback"
+    }
+  },
+  "tenantScope": {
+    "mode": "vendor-family",
+    "compatibilityKey": "coreflex-member-service@demo-v1",
+    "tenantOverrides": []
+  },
+  "contract": {
+    "inputs": [
+      {
+        "name": "memberId",
+        "type": "string",
+        "required": true,
+        "sensitive": true,
+        "pattern": "^M-(?:[0-9]{4}|404|TIMEOUT|RETRY|DENIED|DIALOG)$",
+        "description": "Institution-scoped member identifier. This value is never serialized into the capability or journal."
+      }
+    ],
+    "outputs": [
+      {
+        "name": "savingsBalance",
+        "type": "string",
+        "sensitive": true,
+        "description": "Current savings balance as displayed by the target."
+      },
+      {
+        "name": "outcome",
+        "type": "string",
+        "description": "success or an expected business-outcome code."
+      }
+    ]
+  },
+  "policy": {
+    "allowedOrigins": [
+      "same-origin"
+    ],
+    "allowedRoutes": [
+      "/",
+      "/members",
+      "/members/search"
+    ],
+    "allowedActions": [
+      "navigate",
+      "type",
+      "click",
+      "wait",
+      "extract"
+    ],
+    "allowRiskyActions": false,
+    "dataHandling": "redact-before-persist"
+  },
+  "steps": [
+    {
+      "id": "open-member-inquiry",
+      "type": "navigate",
+      "path": "/members",
+      "checkpoint": {
+        "type": "page_contains",
+        "value": "Member inquiry"
+      }
+    },
+    {
+      "id": "enter-member-id",
+      "type": "type",
+      "target": {
+        "logicalName": "member_number",
+        "candidates": [
+          {
+            "strategy": "accessibility",
+            "role": "textbox",
+            "name": "Member number"
+          },
+          {
+            "strategy": "legacy_form_control",
+            "formAction": "/members/search",
+            "controlName": "member_no",
+            "role": "textbox"
+          },
+          {
+            "strategy": "visible_text",
+            "text": "Member number",
+            "role": "textbox"
+          }
+        ]
+      },
+      "value": "{{memberId}}",
+      "sensitiveInput": "memberId"
+    },
+    {
+      "id": "submit-member-inquiry",
+      "type": "click",
+      "target": {
+        "logicalName": "find_member",
+        "candidates": [
+          {
+            "strategy": "accessibility",
+            "role": "button",
+            "name": "Find member"
+          },
+          {
+            "strategy": "legacy_form_control",
+            "formAction": "/members/search",
+            "controlName": "go",
+            "role": "button"
+          },
+          {
+            "strategy": "visible_text",
+            "text": "Find member",
+            "role": "button"
+          }
+        ]
+      },
+      "checkpoint": {
+        "type": "url_path",
+        "value": "/members/search"
+      }
+    },
+    {
+      "id": "read-savings-balance",
+      "type": "extract",
+      "extract": {
+        "output": "savingsBalance",
+        "pattern": "Savings balance\\s*\\$([0-9,]+\\.\\d{2})",
+        "group": 1
+      },
+      "checkpoint": {
+        "type": "page_contains",
+        "value": "Savings balance"
+      }
+    }
+  ],
+  "success": {
+    "all": [
+      {
+        "type": "url_path",
+        "value": "/members/search"
+      },
+      {
+        "type": "page_contains",
+        "value": "Savings balance"
+      }
+    ]
+  },
+  "outcomes": {
+    "business": [
+      {
+        "code": "member_not_found",
+        "surfaceState": "member_not_found",
+        "callerStatus": "not_found",
+        "message": "No member matched the supplied identifier."
+      }
+    ],
+    "recoverable": [
+      {
+        "code": "transient_loading",
+        "surfaceState": "transient_loading",
+        "strategy": "wait_then_retry",
+        "maxAttempts": 2,
+        "delayMs": 20
+      }
+    ],
+    "hardFailures": [
+      {
+        "code": "session_expired",
+        "surfaceState": "session_expired",
+        "escalate": true
+      },
+      {
+        "code": "permission_denied",
+        "surfaceState": "permission_denied",
+        "escalate": true
+      },
+      {
+        "code": "validation_error",
+        "surfaceState": "validation_error",
+        "escalate": false
+      },
+      {
+        "code": "unexpected_dialog",
+        "surfaceState": "unexpected_dialog",
+        "escalate": true
+      }
+    ]
+  }
+}

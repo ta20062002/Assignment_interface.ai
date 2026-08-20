@@ -1,0 +1,122 @@
+{
+  "kind": "escalated",
+  "capabilityId": "member.savings-balance.read",
+  "runId": "c33b7c35-55f3-4d86-a641-b0dcd79d5ca4",
+  "error": {
+    "code": "session_expired",
+    "message": "Target reported session_expired.",
+    "stepId": "submit-member-inquiry",
+    "expected": {
+      "code": "session_expired",
+      "surfaceState": "session_expired",
+      "escalate": true
+    },
+    "observed": {
+      "surface": "legacy-http",
+      "sessionId": "http-2650939b-a46d-46b7-9758-44a66edb84b5",
+      "url": "http://127.0.0.1:46759/members/search?member_no=[MEMBER_ID]",
+      "title": "CoreFlex Member Service",
+      "state": "session_expired",
+      "text": "CoreFlex Member Service CoreFlex - Member servicing Home | Member inquiry | Operator view Session expired Your session expired. A human may need to sign in and resume. Return to inquiry",
+      "controls": [
+        {
+          "key": "home",
+          "role": "link",
+          "name": "Home",
+          "risk": "safe",
+          "filled": false
+        },
+        {
+          "key": "member_inquiry",
+          "role": "link",
+          "name": "Member inquiry",
+          "risk": "safe",
+          "filled": false
+        },
+        {
+          "key": "operator_view",
+          "role": "link",
+          "name": "Operator view",
+          "risk": "safe",
+          "filled": false
+        },
+        {
+          "key": "member_inquiry",
+          "role": "link",
+          "name": "Return to inquiry",
+          "risk": "safe",
+          "filled": false
+        }
+      ]
+    }
+  },
+  "intervention": {
+    "id": "hitl-587c17ad-d268-4710-bb5c-db197be158a2",
+    "status": "awaiting_human",
+    "ownership": "human",
+    "runId": "c33b7c35-55f3-4d86-a641-b0dcd79d5ca4",
+    "capabilityId": "member.savings-balance.read",
+    "goal": "Read current savings balance",
+    "stepId": "submit-member-inquiry",
+    "reason": {
+      "code": "session_expired",
+      "message": "Target reported session_expired.",
+      "stepId": "submit-member-inquiry",
+      "expected": {
+        "code": "session_expired",
+        "surfaceState": "session_expired",
+        "escalate": true
+      },
+      "observed": {
+        "surface": "legacy-http",
+        "sessionId": "http-2650939b-a46d-46b7-9758-44a66edb84b5",
+        "url": "http://127.0.0.1:46759/members/search?member_no=[MEMBER_ID]",
+        "title": "CoreFlex Member Service",
+        "state": "session_expired",
+        "text": "CoreFlex Member Service CoreFlex - Member servicing Home | Member inquiry | Operator view Session expired Your session expired. A human may need to sign in and resume. Return to inquiry",
+        "controls": [
+          {
+            "key": "home",
+            "role": "link",
+            "name": "Home",
+            "risk": "safe",
+            "filled": false
+          },
+          {
+            "key": "member_inquiry",
+            "role": "link",
+            "name": "Member inquiry",
+            "risk": "safe",
+            "filled": false
+          },
+          {
+            "key": "operator_view",
+            "role": "link",
+            "name": "Operator view",
+            "risk": "safe",
+            "filled": false
+          },
+          {
+            "key": "member_inquiry",
+            "role": "link",
+            "name": "Return to inquiry",
+            "risk": "safe",
+            "filled": false
+          }
+        ]
+      }
+    },
+    "surfaceSessionId": "http-2650939b-a46d-46b7-9758-44a66edb84b5",
+    "operatorUrl": "http://127.0.0.1:46759/operator?request=hitl-587c17ad-d268-4710-bb5c-db197be158a2",
+    "createdAt": "2026-08-19T21:40:17.912Z",
+    "resumedAt": null,
+    "operator": null,
+    "snapshot": {
+      "kind": "html_snapshot",
+      "state": "session_expired",
+      "currentUrl": "http://127.0.0.1:46759/members/search?member_no=[MEMBER_ID]",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>CoreFlex Member Service</title>\n    <style>\n      body { font-family: Arial, sans-serif; margin: 22px; color: #1b2935; }\n      table { border-collapse: collapse; width: 720px; max-width: 100%; }\n      td { border: 1px solid #9aa9b7; padding: 9px; vertical-align: top; }\n      .hdr { background: #143f68; color: #fff; font-weight: bold; }\n      .nav { background: #e6edf3; } .notice { background: #fff3cd; }\n      .error { background: #f8d7da; } .value { font-weight: bold; }\n      button { padding: 5px 10px; } label { display: inline-block; min-width: 160px; }\n    </style>\n  </head>\n  <body>\n    <table role=\"presentation\" aria-label=\"CoreFlex Member Servicing\">\n      <tr><td class=\"hdr\">CoreFlex - Member servicing</td></tr>\n      <tr><td class=\"nav\"><a href=\"/\">Home</a> | <a href=\"/members\">Member inquiry</a> | <a href=\"/operator\">Operator view</a></td></tr>\n      <tr><td><span data-system-state=\"session_expired\"></span><h1>Session expired</h1><div class=\"error\" role=\"alert\">Your session expired. A human may need to sign in and resume.</div><p><a href=\"/members\">Return to inquiry</a></p></td></tr>\n    </table>\n  </body>\n</html>"
+    },
+    "actions": []
+  }
+}

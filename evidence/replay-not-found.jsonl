@@ -1,0 +1,7 @@
+{"seq":1,"at":"2026-08-19T21:40:17.885Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.started","capabilityId":"member.savings-balance.read","capabilityVersion":"1.0.0","surfaceSessionId":"http-64a3acc4-a898-4c80-91f5-a3bd8353882e","inputNames":["memberId"]}
+{"seq":2,"at":"2026-08-19T21:40:17.885Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.step_started","stepId":"open-member-inquiry","action":"navigate"}
+{"seq":3,"at":"2026-08-19T21:40:17.886Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.step_completed","stepId":"open-member-inquiry","action":"navigate"}
+{"seq":4,"at":"2026-08-19T21:40:17.886Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.step_started","stepId":"enter-member-id","action":"type"}
+{"seq":5,"at":"2026-08-19T21:40:17.886Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.step_completed","stepId":"enter-member-id","action":"type"}
+{"seq":6,"at":"2026-08-19T21:40:17.886Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.step_started","stepId":"submit-member-inquiry","action":"click"}
+{"seq":7,"at":"2026-08-19T21:40:17.889Z","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","type":"replay.business_outcome","stepId":"submit-member-inquiry","result":{"kind":"business_outcome","capabilityId":"member.savings-balance.read","runId":"bc9daf40-f90e-4cb8-9747-4304efde5145","code":"member_not_found","callerStatus":"not_found","message":"No member matched the supplied identifier.","outputs":{"outcome":"member_not_found"}}}
